@@ -71,6 +71,15 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
 			if(new Rectangle(ballposX, ballposY,20, 20).intersects(new Rectangle(playerX, 550, 100, 8))) {
 				ballYdir = -ballYdir;
 			}
+			
+			for(int i = 0; i < map.map.length; i++) {
+				for(int j = 0; j < map.map[0.length; j++] ) {
+					if(map.map[i][j] > 0) {
+						int brickX = j * map.brickWidth + 80;
+						int brickY = i * map.brickHeight + 50;
+					}
+				}
+			}
 				
 			ballposX += ballXdir;
 			ballposY += ballYdir;
