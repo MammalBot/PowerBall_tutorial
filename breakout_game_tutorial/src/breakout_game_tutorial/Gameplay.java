@@ -1,6 +1,7 @@
 package breakout_game_tutorial;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -49,6 +50,11 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
 		g.fillRect(0, 0, 692, 3);
 		g.fillRect(692, 0, 3, 592);
 		
+		//scores
+		g.setColor(Color.white);
+		g.setFont(new Font("serif", Font.BOLD, 25));
+		g.drawString("" +score, 590, 30);
+		
 		//paddle
 		g.setColor(Color.green);
 		g.fillRect(playerX, 550, 100, 8);
@@ -56,6 +62,30 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
 		//ball
 		g.setColor(Color.yellow);
 		g.fillOval(ballposX, ballposY, 20,20);
+		
+		if(totalBricks <= 0) {
+			play = false;
+			ballXdir = 0;
+			ballYdir = 0;
+			g.setColor(Color.red);
+			g.setFont(new Font("serif", Font.BOLD, 30));
+			g.drawString("You Won: ", 260, 300);
+			
+			g.setFont(new Font("serif", Font.BOLD, 20));
+			g.drawString("Press Enter to restart ", 230, 350);
+		}
+		
+		if(ballposY > 570 ) {
+			play = false;
+			ballXdir = 0;
+			ballYdir = 0;
+			g.setColor(Color.red);
+			g.setFont(new Font("serif", Font.BOLD, 30));
+			g.drawString("Game Over, Scores: ", 190, 300);
+			
+			g.setFont(new Font("serif", Font.BOLD, 20));
+			g.drawString("Press Enter to restart ", 230, 350);
+		}
 		
 		g.dispose();
 	}
@@ -146,6 +176,21 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
 			}
 			else {
 				moveLeft();
+			}
+		}
+		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+			if(!play) {
+				play = true;
+				ballposX = 120;
+				ballposY = 350;
+				ballXdir = -1;
+				ballYdir = -2;
+				playerX = 310;
+				score = 0;
+				totalBricks = 21;
+				map = new MapGenerator(3,7);
+				
+				repaint();
 			}
 		}
 		
