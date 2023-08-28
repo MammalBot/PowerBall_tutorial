@@ -23,13 +23,13 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
 	private int delay = 8;
 	private int playerX = 310;
 	private int ballposX = 120;
-	private int ballposY = 50;
-//	Random random = new Random();
-//	int n = random.nextInt(2+1-2) - 2;  
-//	private int ballXdir = n;
-//	private int ballYdir = -2;
-	private int ballXdir = -10;
-	private int ballYdir = 2;
+	private int ballposY = 350;
+	Random random = new Random();
+	int n = random.nextInt(2+1-2) - 2;  
+	private int ballXdir = n;
+	private int ballYdir = -2;
+//	private int ballXdir = -10;
+//	private int ballYdir = 2;
 	
 	private MapGenerator map;
 	
