@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Random;
+
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -18,12 +20,16 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
 	private int score = 0;
 	private int totalBricks = 21;
 	private Timer timer;
-	private int delay = 2;
+	private int delay = 8;
 	private int playerX = 310;
 	private int ballposX = 120;
-	private int ballposY = 350;
-	private int ballXdir = -1;
-	private int ballYdir = -2;
+	private int ballposY = 50;
+//	Random random = new Random();
+//	int n = random.nextInt(2+1-2) - 2;  
+//	private int ballXdir = n;
+//	private int ballYdir = -2;
+	private int ballXdir = -10;
+	private int ballYdir = 2;
 	
 	private MapGenerator map;
 	
@@ -119,12 +125,13 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener{
 							totalBricks--;
 							score +=5;
 							
-							if (ballposX + 19 <= brickRect.x || ballposX + 1 >= brickRect.x + brickRect.width)
+							if (ballposX + 19 <= brickRect.x && ballposX + 1 >= brickRect.x + brickRect.width) {
 								ballXdir = -ballXdir;
 						} else {
 							ballYdir = -ballYdir;
 						}
 						break A;
+						}
 					}
 				}
 			}
